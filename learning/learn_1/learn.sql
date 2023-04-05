@@ -43,8 +43,31 @@ SELECT * FROM person;
 -- =========================================================
 -- # Shorting data
 SELECT * FROM person ORDER BY country_of_birth;
-SELECT * FROM person ORDER BY country_of_birth ASC; -- Aa-Zz
-SELECT * FROM person ORDER BY country_of_birth DESC; -- Zz-Aa
+SELECT * FROM person ORDER BY country_of_birth ASC; -- Aa --> Zz
+SELECT * FROM person ORDER BY country_of_birth DESC; -- Zz --> Aa
 SELECT * FROM person ORDER BY id, email; -- combine
+
+
+-- =========================================================
+-- # Removing duplicates
+SELECT country_of_birth FROM person ORDER BY country_of_birth;	
+SELECT DISTINCT country_of_birth FROM person ORDER BY country_of_birth;
+SELECT DISTINCT country_of_birth FROM person ORDER BY country_of_birth DESC;
+
+-- =========================================================
+-- WHERE CLAUSE, filter data based on condition
+SELECT * FROM person WHERE gender = 'Female';
+SELECT * FROM person WHERE gender = 'Male' AND country_of_birth = 'Poland';
+SELECT * FROM person WHERE gender = 'Male' AND (country_of_birth = 'Poland' OR country_of_birth = 'China');
+SELECT * FROM person WHERE gender = 'Male' AND (country_of_birth = 'Poland' OR country_of_birth = 'China') AND last_name = 'Ayars';
+
+-- =========================================================
+-- Comparison Operators
+SELECT 1 = 1; -- True
+SELECT 1 = 2; -- False
+SELECT 1 <= 2; -- True
+SELECT 1 >= 2; -- False
+SELECT 1 <> 2; -- True (1 != 2)
+
 
 -- =========================================================
