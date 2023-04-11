@@ -113,8 +113,49 @@ SELECT 10 / 2; -- 5
 SELECT 10 * 2 + 8; -- 28
 
 -- # WORKING WITH ARITHMETIC OPERATORS
+SELECT id, make, model, price, price * .10 FROM car;
+SELECT id, make, model, price, ROUND(price * .10, 2) FROM car; -- Discount 10%
+SELECT id, make, model, price, ROUND(price * .10, 2), ROUND(price - (price * .10), 2) FROM car; -- Discount 10% and price - discount
 
+-- # Alias
+SELECT id, make, model, price AS original_price, ROUND(price * .10, 2) AS ten_percent_value, ROUND(price - (price * .10), 2) AS discount_after_10_percent FROM car; -- Discount 10% and price - discount
 
+-- # Coalesce
+SELECT COALESCE(1); -- can multiple argument.
+SELECT COALESCE(email, 'Email not provided') FROM person; -- used when u have null column and want set default value null.
+
+-- # NULLIF
+SELECT NULLIF(10, 9); -- 10
+SELECT NULLIF(10, 10); -- null
+SELECT 10 / NULLIF(2, 9); -- 5
+SELECT 10 / NULLIF(0, 0); -- null
+SELECT COALESCE(10 / NULLIF(0, 0), 0); -- 0
+
+-- # TIMESTAMPS & DATES
+SELECT NOW(); -- 2021-12-02 22:14:35.645348+00
+SELECT NOW()::DATE; -- 2021-12-02
+SELECT NOW()::TIME; -- 22:14:35.645348
+-- adding and subtracting dates
+SELECT NOW() - INTERVAL '1 YEAR';
+SELECT NOW() + INTERVAL '1 YEAR';
+SELECT NOW() - INTERVAL '1 MONTHS';
+SELECT NOW() + INTERVAL '1 MONTHS';
+SELECT NOW()::DATE + INTERVAL '10 MONTHS';
+SELECT (NOW() + INTERVAL '10 MONTHS')::DATE;
+-- extracting fields from dates
+SELECT EXTRACT(YEAR FROM NOW()); -- 2023
+SELECT EXTRACT(MONTH FROM NOW()); -- 12
+SELECT EXTRACT(DAY FROM NOW()); -- 30
+
+-- # AGE FUNCTION
+SELECT first_name, last_name, gender, country_of_birth, date_of_birth, AGE(NOW(), date_of_birth) AS age FROM person;
+
+-- # Unique Constraints
+SELECT email, COUNT(*) FROM person GROUP BY email HAVING COUNT(*) > 1;
+
+ALTER TABLE person ADD CONSTRAINT unique_email_address UNIQUE(email); -- make email unique
+ALTER TABLE person ADD UNIQUE(email); -- same like top but postgres will automate name 
+ALTER TABLE person DROP CONSTRAINT unique_email_address; -- delete
 
 -- =========================================================
 -- =========================================================
