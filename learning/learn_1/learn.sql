@@ -157,5 +157,45 @@ ALTER TABLE person ADD CONSTRAINT unique_email_address UNIQUE(email); -- make em
 ALTER TABLE person ADD UNIQUE(email); -- same like top but postgres will automate name 
 ALTER TABLE person DROP CONSTRAINT unique_email_address; -- delete
 
+-- # Check Constraints
+ALTER TABLE person ADD CONSTRAINT gender_constraint CHECK(gender = 'Female' OR gender = 'Male'); --  this will checking gender must be Female or Male
+
+-- # Deleting Records
+DELETE FROM person WHERE id = 10;
+DELETE FROM person WHERE gender = 'Female' AND country_of_birth = 'India';
+
+-- # Updating Records
+UPDATE person SET email = 'kisah@gmail.com' WHERE id = 9;
+UPDATE person SET first_name = 'Kisah', last_name = 'Tegar', email = 'kisahtegar@gmail.com' WHERE id = 9;
+
+-- # ON CONFLICT DO NOTHING
+INSERT INTO person (id, first_name, last_name, gender, email, date_of_birth, country_of_birth) 
+VALUES (9, 'Kisah', 'Tegar', 'Male', 'kisahtegar@gmail.com', DATE '2022-03-29', 'China')
+ON CONFLICT (id) DO NOTHING; -- MAKE SURE NEED TO UNIQUE
+
+-- # ON CONFLICT DO UPDATE
+-- MAKE SURE NEED TO UNIQUE
+INSERT INTO person (id, first_name, last_name, gender, email, date_of_birth, country_of_birth) 
+VALUES (9, 'Kisah', 'Tegar', 'Male', 'kisahtegar@fire.uk', DATE '2022-03-29', 'China')
+ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email; 
+
+INSERT INTO person (id, first_name, last_name, gender, email, date_of_birth, country_of_birth) 
+VALUES (9, 'Kisah', 'Abdi', 'Male', 'kisahtegar@fire.uk', DATE '2022-03-29', 'China')
+ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email, last_name = EXCLUDED.last_name; 
+
+-- # FOREIGN KEYS & RELATIONSHIPS
+-- Adding Foreign Keys
+
+
+
+-- # 
+
+
+-- # 
+
+
+-- # 
+
+
 -- =========================================================
 -- =========================================================
