@@ -184,18 +184,37 @@ VALUES (9, 'Kisah', 'Abdi', 'Male', 'kisahtegar@fire.uk', DATE '2022-03-29', 'Ch
 ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email, last_name = EXCLUDED.last_name; 
 
 -- # FOREIGN KEYS & RELATIONSHIPS
--- Adding Foreign Keys
+-- Adding Foreign Keys : person-car.sql
+-- ! Updating Foreign Keys
+UPDATE person SET car_id = 2 WHERE id = 1;
 
+-- INNER JOINS: find if id match 
+SELECT * FROM person JOIN car ON person.car_id = car.id; 
+SELECT person.first_name, car.make, car.model, car.price FROM person JOIN car ON person.car_id = car.id; -- select what i wantS
+SELECT * FROM person JOIN car USING (car_id);
 
+-- LEFT JOINS: Include everyone if they have car or without car.
+SELECT * FROM person LEFT JOIN car ON person.car_id = car.id;
+SELECT * FROM person LEFT JOIN car ON person.car_id = car.id WHERE car.* IS NULL;
 
--- # 
+-- ! DELETING FOREIGN KEYS
+DELETE FROM person WHERE id = 9000; -- first delete the person 
+DELETE FROM car where id = 13; -- then delete the car 
 
+-- # SEQUENCES
+ALTER SEQUENCE person_id_seq RESTART WITH 5; -- Restarting next value id
 
--- # 
+-- # EXTENSIONS
+SELECT * FROM pg_available_extensions; -- look all extensions
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp"; -- install extensions
+\df -- command list of functions
+SELECT uuid_generate_v4(); -- Running function
 
+-- # UUID IN ACTION
+UPDATE person SET car_uid = '5810973b-6e1e-42a6-9366-ed69b4f7cdd9' WHERE person_uid = '43e39932-b95b-4849-ba81-7d39af204e61';
+SELECT * FROM person JOIN car ON person.car_uid = car.car_uid;
 
--- # 
-
-
+-- # EXPORTING TO CSV
+\copy (SELECT * FROM person) TO '/Path/result.csv' DELIMITER ',' CSV HEADER;
 -- =========================================================
 -- =========================================================
