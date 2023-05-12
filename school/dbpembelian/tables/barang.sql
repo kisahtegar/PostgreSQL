@@ -17,11 +17,11 @@ CREATE TABLE IF NOT EXISTS public.barang (
 	UNIQUE(id_jenis_barang),
 	UNIQUE(id_supplier)
 );
-INSERT INTO barang (kode_barang, nama_barang, stok_barang, harga_barang, kode_satuan) VALUES (1, 'Kulkas', 15, '1065.83', 'KG');
-INSERT INTO barang (kode_barang, nama_barang, stok_barang, harga_barang, kode_satuan) VALUES (2, 'Kulkas', 74, '1537.27', 'BOX');
-INSERT INTO barang (kode_barang, nama_barang, stok_barang, harga_barang, kode_satuan) VALUES (3, 'Kulkas', 92, '2376.30', 'PCS');
-INSERT INTO barang (kode_barang, nama_barang, stok_barang, harga_barang, kode_satuan) VALUES (4, 'Kulkas', 33, '6236.95', 'KG');
-INSERT INTO barang (kode_barang, nama_barang, stok_barang, harga_barang, kode_satuan) VALUES (5, 'Kulkas', 51, '3856.45', 'BOX');
-INSERT INTO barang (kode_barang, nama_barang, stok_barang, harga_barang, kode_satuan) VALUES (6, 'Kulkas', 53, '8798.87', 'BOX');
-INSERT INTO barang (kode_barang, nama_barang, stok_barang, harga_barang, kode_satuan) VALUES (7, 'Kulkas', 79, '2230.35', 'PCS');
-INSERT INTO barang (kode_barang, nama_barang, stok_barang, harga_barang, kode_satuan) VALUES (8, 'Kulkas', 98, '8772.94', 'SET');
+INSERT INTO barang (kode_barang, nama_barang, stok_barang, harga_barang, kode_satuan) VALUES (1, 'Batik', 15, '1065.83', 'PCS');
+INSERT INTO barang (kode_barang, nama_barang, stok_barang, harga_barang, kode_satuan) VALUES (2, 'Jacket', 74, '1537.27', 'KODI');
+INSERT INTO barang (kode_barang, nama_barang, stok_barang, harga_barang, kode_satuan) VALUES (3, 'Sweater', 92, '2376.30', 'LUSIN');
+INSERT INTO barang (kode_barang, nama_barang, stok_barang, harga_barang, kode_satuan) VALUES (4, 'Crewneck', 33, '6236.95', 'GRIM');
+INSERT INTO barang (kode_barang, nama_barang, stok_barang, harga_barang, kode_satuan) VALUES (5, 'Kemeja', 51, '3856.45', 'BOX');
+INSERT INTO barang (kode_barang, nama_barang, stok_barang, harga_barang, kode_satuan) VALUES (6, 'Flanel', 53, '8798.87', 'BOX');
+INSERT INTO barang (kode_barang, nama_barang, stok_barang, harga_barang, kode_satuan) VALUES (7, 'Koko pria', 79, '2230.35', 'PCS');
+INSERT INTO barang (kode_barang, nama_barang, stok_barang, harga_barang, kode_satuan) VALUES (8, 'Gamis', 98, '8772.94', 'SET');
