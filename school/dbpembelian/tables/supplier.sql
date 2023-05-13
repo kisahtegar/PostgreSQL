@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS public.supplier (
-	id_supplier BIGSERIAL NOT NULL PRIMARY KEY,
+	kode_supplier BIGSERIAL NOT NULL PRIMARY KEY,
 	nama_supplier VARCHAR(40) NOT NULL,
 	alamat_supplier VARCHAR(100) NOT NULL,
 	telepon_supplier VARCHAR(15) NOT NULL
